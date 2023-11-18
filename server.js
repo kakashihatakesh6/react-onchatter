@@ -22,7 +22,10 @@ const io = new Server(server, {
 
 
 app.get('/', (req, res) => {
-    res.send({"message": "Hello from Server"});
+    res.send({
+        "message": "Hello from Server",
+        "nikhil": "hello Nikhil!"
+    });
 });
 
 server.listen(port, () => {
