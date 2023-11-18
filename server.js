@@ -12,20 +12,20 @@ app.use(express.json());
 
 const server = http.createServer(app);
 
-const io = new Server(server);
-// const io = new Server(server, {
-//     cors: {
-//         origin: "https://react-on-chatter-6ef12e3df9fb.herokuapp.com/",
-//         // origin: "https://react-on-chatter-6ef12e3df9fb.herokuapp.com/",
-//         methods: ["GET", "POST"]
-//     },
-// })
+// const io = new Server(server);
+const io = new Server(server, {
+    cors: {
+        origin: "https://react-on-chatter-6ef12e3df9fb.herokuapp.com/",
+        // origin: "https://react-on-chatter-6ef12e3df9fb.herokuapp.com/",
+        methods: ["GET", "POST"]
+    },
+})
 
 
 app.get('/', (req, res) => {
     res.send({
         "message": "Hello from Server",
-        "nikhil": "hello Nikhil! 3"
+        "nikhil": "hello Nikhil!"
     });
 });
 
