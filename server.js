@@ -10,15 +10,16 @@ port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// app.use(express.static(path.resolve("../onchatter/public/")));
-
 const server = http.createServer(app);
-const io = new Server(server, {
-    cors: {
-        origin: "http://localhost:3000",
-        methods: ["GET", "POST"]
-    },
-})
+
+const io = new Server(server);
+// const io = new Server(server, {
+//     cors: {
+//         origin: "https://react-on-chatter-6ef12e3df9fb.herokuapp.com/",
+//         // origin: "https://react-on-chatter-6ef12e3df9fb.herokuapp.com/",
+//         methods: ["GET", "POST"]
+//     },
+// })
 
 
 app.get('/', (req, res) => {
@@ -35,4 +36,9 @@ server.listen(port, () => {
 io.on('connection', (socket)=> {
     console.log("New WS Connection");
     console.log(socket.id)
+    socket.on("message", (message) => {
+        console.log(message)
+        socket.emit("everyone-recieve-it", {"STC" : message})
+    });
+    
 });
