@@ -25,7 +25,7 @@ const io = new Server(server);
 app.get('/', (req, res) => {
     res.send({
         "message": "Hello from Server",
-        "nikhil": "hello Nikhil!"
+        "nikhil": "hello Nikhil! 3"
     });
 });
 
